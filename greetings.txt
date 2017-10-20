@@ -1,0 +1,3 @@
+Hello cuzonesHello cuzones
+Hello, vlbit!
+Hello, ${user.username}Hello, vlbit!Hello, vlbit!Hello, vlbit!
