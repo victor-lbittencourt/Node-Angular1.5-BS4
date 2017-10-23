@@ -1,14 +1,11 @@
-var fs = require('fs');
-var http = require('http');
-const os = require('os');
-var user = os.userInfo();
+var express = require('express');
+var app = express();
+var http = require('http').Server(app);
+var port = 8080;
 
-console.log('Starting file');
-fs.appendFile('greetings.txt', `Hello, ${user.username}!` , function(err){
-    if(err){
-        console.log('Unable to append string.');
-    }
-    if(!err){
-        console.log('Append successfull');
-    }
+app.use(express.static('public'));
+app.use(express.static('src/views'));
+
+http.listen(port, function(err) {
+    console.log("Listening on port " + port);
 });
