@@ -1,5 +1,15 @@
 var app = angular.module('app', []);
-app.controller('AppCtrl', function AppCtrl() {
+app.controller('AppCtrl', function AppCtrl($scope) {
     var vm = this;
-    vm.test = "NodeJS, Angular 1.5, Bootstrap 4.";
+    vm.socket = io();
+    vm.bs = "Bootstrap 4 working!";
+    vm.angular = "Angular 1.5.11 working!";
+    vm.ndjs = "NodeJS working!";
+
+    vm.socket.on('ServerHandshake', function(data) {
+        vm.serverGrt = data.serverGreeting;
+        $scope.$apply(function() {
+            vm.sio = "Socket.io working!";
+        });
+    });
 });
