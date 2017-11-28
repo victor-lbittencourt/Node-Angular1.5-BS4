@@ -6,8 +6,10 @@ var port = 8080;
 var io = require('socket.io')(http);
 
 //-----------------------------------ARQUIVOS ESTÁTICOS-----------------------//
-app.use(express.static('public'));
+app.use(express.static('public/js'));
+app.use(express.static('public/styles'));
 app.use(express.static('src/views'));
+app.use(express.static('node_modules'));
 
 //-----------------------------------SERVER CONFIG----------------------------//
 http.listen(port, function(err) {

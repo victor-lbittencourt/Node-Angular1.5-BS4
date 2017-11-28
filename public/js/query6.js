@@ -4,7 +4,7 @@ app.controller('AppCtrl', function AppCtrl($scope, $location,$http) {
   vm.socket = io();
   vm.queries = [];
   vm.arrow=true;
-  $http.get('http://192.168.0.12:3000/queries/6')
+  $http.get('http://localhost:3000/queries/6')
   .then(function(response) {
         vm.data = response.data;
         for (var i = 0; i < vm.data.length; i++) {
