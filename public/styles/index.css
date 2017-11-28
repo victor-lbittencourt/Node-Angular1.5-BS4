@@ -1,0 +1,25 @@
+.index{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.title{
+  text-align: center;
+  background-color: #404040;
+  font-size: 300%;
+  margin-bottom: 15px;
+  color: #6DBDD6;
+  padding: 22px 0;
+}
+
+.query-btn{
+  width: 15%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.query-title{
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 15px;
+}

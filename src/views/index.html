@@ -2,40 +2,37 @@
 <html lang="en" ng-app="app">
 
 <head>
-    <title>NodeJS | Angular 1.5 | Bootstrap 4</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Referenciando o Socket -->
-    <script src="/socket.io/socket.io.js"></script>
-    <!-- Importando o Bootstrap 4 -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <!-- Importando o Angular 1.5.11 -->
-    <script data-require="angular.js@1.5.11" data-semver="1.5.11" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js"></script>
-    <!-- Importando o arquivo JS que implementa o controlador -->
-    <script src="js/script.js"></script>
+  <title>NodeJS | Angular 1.5 | Bootstrap 4</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Referenciando o Socket -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Importando o Bootstrap 4 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- Importando o Angular 1.5.11 -->
+  <link rel="stylesheet" href="styles/index.css">
+  <script src="https://use.fontawesome.com/8ad7a796d8.js"></script>
+  <script data-require="angular.js@1.5.11" data-semver="1.5.11" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js"></script>
+  <!-- Importando o arquivo JS que implementa o controlador -->
+  <script src="js/index.js"></script>
 </head>
 
 <body ng-controller="AppCtrl as vm">
-    <div class="container">
-        <div class="alert alert-success" role="alert">
-            {{vm.bs}}
-        </div>
-        <div class="alert alert-success" role="alert">
-            {{vm.ndjs}}
-        </div>
-        <div class="alert alert-success" role="alert">
-            {{vm.angular}}
-        </div>
-        <div class="alert alert-success" role="alert" ng-show="vm.sio">
-            {{vm.sio}}
-        </div>
+  <h1 class="title">Introdução a Banco de Dados</h1>
+  <div class="container index">
+
+    <div class="alert alert-success">
+      <p>Esta interface gráfica foi desenvolvida para visualização das queries realizadas no banco de dados criado para o trabalho final da disciplina Introdução a Banco de Dados.</p>
+      <button class="btn btn-primary query-btn" type="button" name="button" ng-click=vm.GoToQueries()>
+            Queries <i class="fa fa-arrow-right"></i> </button>
     </div>
+  </div>
 
 
-    <!-- Importando JQuery3.2.1, Popper e plugins JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <!-- Importando JQuery3.2.1, Popper e plugins JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+
+<head>
+  <title>NodeJS | Angular 1.5 | Bootstrap 4</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Referenciando o Socket -->
+  <script src="/socket.io/socket.io.js"></script>
+  <!-- Importando o Bootstrap 4 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <!-- Importando o Angular 1.5.11 -->
+  <link rel="stylesheet" href="styles/index.css">
+  <script src="https://use.fontawesome.com/8ad7a796d8.js"></script>
+  <script data-require="angular.js@1.5.11" data-semver="1.5.11" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js"></script>
+  <!-- Importando o arquivo JS que implementa o controlador -->
+  <script src="js/query1.js"></script>
+</head>
+
+<body ng-controller="AppCtrl as vm">
+  <h1 class="title">Introdução a Banco de Dados</h1>
+  <div class="container index">
+
+    <div style="display:flex;justify-content:space-between;">
+      <button ng-click=vm.previous() class="btn btn-inactive"type="button" name="button"><i class="fa fa-arrow-left"></i> Anterior</button>
+      <div class="dropdown">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+    Queries
+  </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <h6 class="dropdown-header">Seleção e Projeção</h6>
+          <a class="dropdown-item" href="query1.html">Query 1</a>
+          <a class="dropdown-item" href="query2.html">Query 2</a>
+          <h6 class="dropdown-header">Junção de 2 relações</h6>
+          <a class="dropdown-item" href="query3.html">Query 3</a>
+          <a class="dropdown-item" href="query4.html">Query 4</a>
+          <a class="dropdown-item" href="query5.html">Query 5</a>
+          <h6 class="dropdown-header">Junção 3 ou mais relações</h6>
+          <a class="dropdown-item" href="query6.html">Query 6</a>
+          <a class="dropdown-item" href="query7.html">Query 7</a>
+          <a class="dropdown-item" href="query8.html">Query 8</a>
+          <h6 class="dropdown-header">Agregação de Junção 2 ou mais relações</h6>
+          <a class="dropdown-item" href="query9.html">Query 9</a>
+          <a class="dropdown-item" href="query10.html">Query 10</a>
+        </div>
+      </div>
+      <button ng-click=vm.next() class="btn btn-success"type="button" name="button">Próxima <i class="fa fa-arrow-right"></i> </button>
+    </div>
+    <div class="alert alert-primary query-title">
+      <h1 data-toggle="tooltip" data-placement="left" title="Tooltip on left">Query 1</h1>
+    </div>
+    <div class="alert alert-primary">
+      <p>Esta consulta retorna o nome de todos os órgãos superiores, ou seja, aqueles que possuem órgãos subordinados.</p>
+      <div style="display:flex;justify-content:space-between;">
+        <p style="display:inline;">Retorna 134 entradas</p>
+        <a ng-show="vm.arrow" ng-click="vm.arrow=false" style="display:inline; color:white;" class="btn btn-dark" data-toggle="collapse" data-target=".multi-collapse">
+          Mostrar Query <i class="fa fa-arrow-down"></i>
+        </a>
+        <a ng-hide="vm.arrow" ng-click="vm.arrow=true" style="display:inline; color:white;" class="btn btn-dark" data-toggle="collapse" data-target=".multi-collapse">
+          Ocultar Query <i class="fa fa-arrow-up"></i>
+        </a>
+      </div>
+
+      <div style="margin-top:10px;" class="collapse multi-collapse" id="showQuery">
+        <div class="alert alert-danger">
+          SELECT name FROM organizations WHERE id IN (SELECT superior_id FROM organizations) ORDER BY name;
+        </div>
+      </div>
+
+      <div style="margin-top:10px;" class="collapse multi-collapse" id="showQuery">
+        <div class="alert alert-secondary">
+          SELECT DISTINCT org1.name FROM organizations AS org2, organizations AS org1 WHERE org1.id = org2.superior_id ORDER BY org1.name LIMIT 0, 1000
+        </div>
+      </div>
+    </div>
+
+    <nav style="float:right;">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link" ng-click=vm.decrementPage(vm.page)>Previous</a></li>
+        <li class="page-item"><a class="page-link" ng-click="vm.queriesArray(1)">1</a></li>
+        <li class="page-item"><a class="page-link" ng-click="vm.queriesArray(2)">2</a></li>
+        <li class="page-item"><a class="page-link" ng-click="vm.queriesArray(3)">3</a></li>
+        <li class="page-item"><a class="page-link" ng-click=vm.incrementPage(vm.page)>Next</a></li>
+      </ul>
+    </nav>
+
+    <table class="table table-striped table-dark">
+      <thead>
+        <tr>
+          <th scope="col" class="table-number">#</th>
+          <th scope="col">Órgão</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="item in vm.array">
+          <td>{{item.index}}</td>
+          <td>{{item.data.name}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+  <!-- Importando JQuery3.2.1, Popper e plugins JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+
+</html>
